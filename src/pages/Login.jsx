@@ -1,21 +1,25 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import { signIn } from '../auth/firebase.js';
+import { useNavigate } from 'react-router-dom';
 
-const Register = () => {
+const Login = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log(email, password);
+    signIn(email, password, navigate);
+    // console.log(email, password);
   };
 
   return (
     <div className="d-flex justify-content-center">
       <div className="form-image d-none d-md-block ">
-        <img src={"https://picsum.photos/800/800"} alt="sample-movie" />
+        <img src={'https://picsum.photos/800/800'} alt="sample-movie" />
       </div>
       <div className="register-form">
-        <h1 className="form-title display-3 ">Login</h1>
+        <h1 className="form-title display-3 ">Register</h1>
         <form id="register" onSubmit={handleLogin}>
           <div className="mb-3">
             <label htmlFor="email" className="form-label">
@@ -50,10 +54,12 @@ const Register = () => {
             value="Login"
           />
         </form>
-        <div className="btn btn-primary form-control">Continue With Google</div>
+        <button className="btn btn-primary form-control ">
+          Continue with Google
+        </button>
       </div>
     </div>
   );
 };
 
-export default Register;
+export default Login;
