@@ -6,9 +6,14 @@ const MovieDetail = () => {
   const [movieDetails, setMovieDetails] = useState({});
   const { id } = useParams();
 
-  const {title, poster_path, overview, vote_average, release_date, vote_count } = movieDetails;
-
-
+  const {
+    title,
+    poster_path,
+    overview,
+    vote_average,
+    release_date,
+    vote_count,
+  } = movieDetails;
 
   const API_KEY = process.env.REACT_APP_TMDB_KEY;
   const movieDetailBaseUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`;
@@ -48,8 +53,9 @@ const MovieDetail = () => {
               <li className="list-group-item">
                 {'Total Vote : ' + vote_count}
               </li>
-              <li className="list-group-item"></li>
-              <Link to={-1}>Go Back</Link>
+              <li className="list-group-item">
+                <Link to={-1}>Go Back</Link>
+              </li>
             </ul>
           </div>
         </div>
